@@ -308,7 +308,7 @@
                                 <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
                                     哈囉！剛剛體驗還好嗎？也許我們生活中，偶爾都會遇到這些狀況，<br/>
                                     遲到、忘東忘西、上課神遊......<br/>
-                                    不過短短幾分鐘 of 體驗，<br/>
+                                    不過短短幾分鐘的體驗，<br/>
                                     其實是許多 <strong>ADHDer（過動症者）的日常</strong>。<br/>
                                     這並不是因為他們「不努力」，而是大腦的運作、機制有些差異。
                                 </p>
@@ -507,7 +507,7 @@
                                         className="bg-red-50 p-3 md:p-4 rounded-2xl border-l-8 border-red-400 shadow-sm text-sm md:text-base custom-sway border-2 border-red-300" 
                                         style={{ '--sway-delay': '0.7s', '--sway-duration': '3.0s' }}
                                     >
-                                        <strong>自己：</strong> 我是不是真的很糟糕......為什麼連「別人」輕鬆能做到的事，我都做不好？
+                                        <strong>自己：</strong> 我是不是真的很糟糕......為什麼別人能做到的事情，我都做不好？
                                     </div>
                                 </div>
 
@@ -751,6 +751,42 @@
                             )}
                         </div>
                     </div>
+
+                    {/* 彈窗：回饋後果 */}
+                    {feedback && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm">
+                            <div className="bg-white p-8 rounded-3xl border-4 border-black max-w-sm text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] animate-in fade-in zoom-in duration-250">
+                                <div className="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-black">
+                                    <AlertCircleIcon />
+                                </div>
+                                <p className="text-xl font-black mb-6 text-gray-800">{feedback.text}</p>
+                                <button 
+                                    onClick={() => setFeedback(null)}
+                                    className="w-full bg-black text-white py-3 rounded-full font-bold border-2 border-black hover:bg-gray-800 active:translate-y-0.5"
+                                >
+                                    關閉
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* 彈窗：理想自我悄悄話 */}
+                    {modal && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60">
+                            <div className="bg-white p-8 rounded-3xl border-4 border-black max-w-sm shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative">
+                                <h3 className="text-2xl font-black mb-4 flex items-center gap-2 text-black">
+                                    <InfoIcon className="text-blue-500" /> {modal.title}
+                                </h3>
+                                <p className="text-gray-700 leading-relaxed mb-6 font-bold">{modal.content}</p>
+                                <button 
+                                    onClick={() => setModal(null)}
+                                    className="w-full bg-gray-200 text-black py-3 rounded-full font-bold border-2 border-black hover:bg-gray-300"
+                                >
+                                    我知道了
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
                     <Footer />
                 </div>
